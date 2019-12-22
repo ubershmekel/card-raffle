@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>WebCard</title>
-    <meta name="description" content="Simple, shareable, card page. As a business card or anything really.">
+    <title>Card Raffle</title>
+    <meta name="description" content="Shuffle cards for playing Werewolf, Mafia or anything else">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/iconfinder_misc-_card_notes_1276876.png">
 
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/holiday.css" />
     <link rel="stylesheet" href="css/main.css">
 
     <meta name="theme-color" content="#fafafa">
@@ -43,35 +43,40 @@
 <body>
     <div id="the-app">
 
-        <section id="the-card" :style="{background, color, fontSize}">
-            <h1 id="the-text">{{ text }}</h1>
+        <section id="the-card">
+            <h1 id="the-text">{{ currentCardText() }}</h1>
+
+            <div class="control-ui">
+                <button @click="prev()">Previous</button>
+                <span class="status">
+                    {{ this.index + 1 }} / {{ sortedDeck().length }}
+                </span>
+                <button @click="next()">Next</button>
+            </div>
+
         </section>
 
         <section id="the-editor">
-            <h1>WebCard</h1>
+            <h1>Card Raffle</h1>
+
+            <h2>Shuffle cards for playing Werewolf, Mafia or anything else</h2>
 
             <div class="widget">
-                <input v-model="background" placeholder="#fafafa">
-                <label>Background color</label>
+                <button @click="addCard()">+</button>
             </div>
 
-            <div class="widget">
-                <input v-model="color" placeholder="#fafafa">
-                <label>Font color</label>
-            </div>
-
-            <div class="widget">
-                <input v-model="fontSize" placeholder="#fafafa">
-                <label>Font size</label>
-            </div>
-
-            <div class="widget">
-                <textarea v-model="text" placeholder="Your email here"></textarea>
+            <div class="widget" v-for="card, i in cards">
                 <label>Card text</label>
+                <input v-model="card.text" placeholder="Wolf or anything...">
+                <label>Amount</label>
+                <input v-model="card.amount" placeholder="1">
+                <button @click="removeCard(i)">x</button>
             </div>
 
             <div class="widget">
-                <button @click="goFullScreen">Fullscreen mode</button>
+                <label>Seed</label>
+                <input v-model="seed" placeholder="seed like 1234">
+                <button @click="shuffle()">Shuffle</button>
             </div>
 
         </section>
@@ -81,9 +86,14 @@
                 FYI this page works offline.
             </p>
             <div class="widget">
-                <a href="https://github.com/ubershmekel/webcard">source</a>
+                <a href="https://github.com/ubershmekel/card-raffle">source</a>
                 <a href="https://twitter.com/ubershmekel">twitter</a>
             </div>
+            <div class="widget">
+                <h2>Shuffled deck log</h2>
+                <p v-for="cardText, i in shuffledDeck()">{{ i + 1 }}. {{ cardText }}</a>
+            </div>
+
         </footer>
 
     </div>
