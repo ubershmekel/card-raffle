@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/iconfinder_misc-_card_notes_1276876.png">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/holiday.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css">
 
     <meta name="theme-color" content="#fafafa">
@@ -44,14 +44,15 @@
     <div id="the-app">
 
         <section id="the-card">
+            <span class="status">
+                {{ this.index + 1 }} / {{ sortedDeck().length }}
+            </span>
+
             <h1 id="the-text">{{ currentCardText() }}</h1>
 
             <div class="control-ui">
-                <button @click="prev()">Previous</button>
-                <span class="status">
-                    {{ this.index + 1 }} / {{ sortedDeck().length }}
-                </span>
-                <button @click="next()">Next</button>
+                <button @click="prev()">⇦</button>
+                <button @click="next()">⇨</button>
             </div>
 
         </section>

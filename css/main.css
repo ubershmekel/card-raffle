@@ -12,7 +12,6 @@ font-family: 'Ubuntu', sans-serif;
 
 #the-text {
     border-radius: 1em;
-    padding: 1em;
     /* `white-space: pre` allows newlines to show as <br> */
     white-space: pre;
     /* position: absolute;
@@ -21,8 +20,8 @@ font-family: 'Ubuntu', sans-serif;
     margin-right: -50%;
     transform: translate(-50%, -50%) */
     flex: 1 100%;
-    font-size: 15vw;
-
+    font-size: 12vw;
+    margin: 10px;
 }
 
 #the-card {
@@ -30,13 +29,12 @@ font-family: 'Ubuntu', sans-serif;
     background: #2bf;
     position: relative;
     width: 100%;
-    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     flex-flow: row wrap;
     text-align: center;
+
 }
 
 textarea {
@@ -46,16 +44,11 @@ textarea {
 
 button {
     margin: 1em 0;
-    font-size: 8vw;
 }
 
 .widget {
     margin: 0.5em;
     border-bottom: 1px solid #000;
-}
-
-#the-editor {
-    margin: 1em;
 }
 
 .widget a {
@@ -65,6 +58,7 @@ button {
 
 .control-ui {
     flex: 1 100%;
+    font-size: 5vw;
 }
 
 .status {
