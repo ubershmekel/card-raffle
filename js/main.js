@@ -34,7 +34,7 @@
                 amount: 1,
             },
             {
-                text: "Seer",
+                text: "Healer",
                 amount: 1,
             },
         ],
